@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,75 +13,77 @@
             padding: 40px 20px;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        
+
         .container {
             max-width: 700px;
             background: white;
             border-radius: 15px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
             overflow: hidden;
         }
-        
+
         .header {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             padding: 30px 20px;
             text-align: center;
         }
-        
+
         .header h1 {
             margin: 0;
             font-size: 2rem;
             font-weight: bold;
         }
-        
+
         .header p {
             margin: 8px 0 0 0;
             font-size: 0.95rem;
             opacity: 0.9;
         }
-        
+
         .content {
             padding: 30px;
         }
-        
+
         .form-section {
             background: #f8f9fa;
             padding: 20px;
             border-radius: 10px;
             margin-bottom: 20px;
         }
-        
+
         .form-section h3 {
             color: #667eea;
             margin-bottom: 15px;
             font-weight: bold;
             font-size: 1.1rem;
         }
-        
+
         .form-group {
             margin-bottom: 12px;
         }
-        
+
         .form-label {
             font-weight: 600;
             color: #333;
             margin-bottom: 6px;
             font-size: 0.95rem;
         }
-        
-        .form-control, .form-select {
+
+        .form-control,
+        .form-select {
             border: 2px solid #ddd;
             border-radius: 8px;
             padding: 10px 12px;
             font-size: 0.95rem;
         }
-        
-        .form-control:focus, .form-select:focus {
+
+        .form-control:focus,
+        .form-select:focus {
             border-color: #667eea;
             box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
         }
-        
+
         .btn-predict {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             border: none;
@@ -94,13 +97,13 @@
             width: 100%;
             margin-bottom: 10px;
         }
-        
+
         .btn-predict:hover {
             transform: translateY(-2px);
             box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
             color: white;
         }
-        
+
         .result {
             background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);
             color: #333;
@@ -108,59 +111,60 @@
             border-radius: 10px;
             display: none;
         }
-        
+
         .result.show {
             display: block;
             animation: slideIn 0.5s ease-out;
         }
-        
+
         .result.error {
             background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
         }
-        
+
         @keyframes slideIn {
             from {
                 opacity: 0;
                 transform: translateY(20px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
-        
+
         .grade-display {
             text-align: center;
         }
-        
+
         .grade-number {
             font-size: 3.5rem;
             font-weight: bold;
             margin: 15px 0;
             color: #667eea;
         }
-        
+
         .grade-status {
             font-size: 1.3rem;
             font-weight: 600;
             color: #764ba2;
         }
-        
+
         .alert {
             margin-bottom: 15px;
             display: none;
         }
-        
+
         .alert.show {
             display: block;
         }
-        
+
         .loading {
             display: none;
             text-align: center;
             padding: 20px;
         }
-        
+
         .spinner {
             border: 4px solid #f3f3f3;
             border-top: 4px solid #667eea;
@@ -170,53 +174,58 @@
             animation: spin 1s linear infinite;
             margin: 0 auto;
         }
-        
+
         @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
         }
-        
+
         .feature-item {
             display: flex;
             justify-content: space-between;
             padding: 8px 0;
-            border-bottom: 1px solid rgba(0,0,0,0.1);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
         }
-        
+
         .top-features {
             background: #f8f9fa;
             padding: 20px;
             border-radius: 10px;
             margin-top: 20px;
         }
-        
+
         .top-features h5 {
             color: #667eea;
             margin-bottom: 15px;
         }
-        
+
         .btn-secondary {
             background: #6c757d;
         }
-        
+
         .btn-secondary:hover {
             background: #5a6268;
             color: white;
         }
-        
+
         .mode-toggle {
             text-align: center;
             padding: 10px 0;
             margin-bottom: 20px;
         }
-        
+
         .mode-toggle a {
             color: #667eea;
             text-decoration: none;
             font-weight: 600;
             font-size: 0.9rem;
         }
-        
+
         .mode-toggle a:hover {
             text-decoration: underline;
         }
@@ -241,7 +250,7 @@
             background: white;
             padding: 20px;
             border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
             margin-bottom: 20px;
         }
 
@@ -307,7 +316,7 @@
                 flex-direction: column;
                 gap: 15px;
             }
-            
+
             .results-left,
             .results-right {
                 width: 100%;
@@ -389,6 +398,21 @@
             margin: 0 !important;
         }
 
+        .btn-secondary {
+            background: white;
+            color: #667eea;
+            border: 2px solid #667eea;
+            border-radius: 10px;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .btn-secondary:hover {
+            background: #f0f4ff;
+            color: #764ba2;
+            border-color: #764ba2;
+        }
+
         .section-content.grade-chart {
             display: flex;
             gap: 40px;
@@ -427,27 +451,95 @@
             padding: 15px 20px;
             margin-bottom: 0;
             border-radius: 10px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* AI Feedback Section */
+        .feedback-card {
+            background: white;
+            color: #333;
+        }
+
+        .feedback-loading {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            color: #667eea;
+            font-size: 0.95rem;
+            padding: 20px;
+        }
+
+        .feedback-content {
+            line-height: 1.8;
+            color: #333;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            font-size: 0.95rem;
+        }
+
+        /* Markdown styling for feedback */
+        .feedback-content p {
+            margin-bottom: 4px;
+            margin-top: 0;
+        }
+
+        .feedback-content strong {
+            color: #667eea;
+            font-weight: 600;
+        }
+
+        .feedback-content em {
+            color: #764ba2;
+        }
+
+        .feedback-content ul,
+        .feedback-content ol {
+            margin-left: 20px;
+            margin-bottom: 4px;
+            margin-top: 2px;
+        }
+
+        .feedback-content li {
+            margin-bottom: 2px;
+        }
+
+        .feedback-content h1,
+        .feedback-content h2,
+        .feedback-content h3 {
+            color: #667eea;
+            margin-top: 4px;
+            margin-bottom: 2px;
+        }
+
+        .feedback-error {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            color: #856404;
+            padding: 15px;
+            border-radius: 8px;
         }
     </style>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
+
 <body>
     <div class="container">
         <div class="header">
             <h1>📚 Prediksi Nilai Siswa</h1>
             <p>⚡ Prediksi Cepat (10 Fitur Terpenting)</p>
         </div>
-        
+
         <div class="content">
             <div class="mode-toggle">
                 <small>Menggunakan <strong>10 fitur terpenting</strong> • <a href="/">Ganti ke Form Lengkap</a></small>
             </div>
-            
+
             <!-- Alert -->
             <div id="alert" class="alert alert-danger alert-dismissible fade" role="alert">
                 <strong id="alert-message"></strong>
             </div>
-            
+
             <!-- Loading -->
             <div class="loading" id="loading">
                 <div class="spinner"></div>
@@ -459,20 +551,28 @@
                 <div style="padding: 15px;">
                     <h5 style="margin: 0 0 12px 0; color: #667eea; font-size: 1rem;">📊 Informasi Model</h5>
                     <div style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 12px;">
-                        <div style="padding: 10px; background: #f8f9fa; border-left: 3px solid #667eea; border-radius: 4px;">
-                            <div style="font-size: 0.75rem; color: #666; font-weight: 600; margin-bottom: 4px;">Tipe Model</div>
+                        <div
+                            style="padding: 10px; background: #f8f9fa; border-left: 3px solid #667eea; border-radius: 4px;">
+                            <div style="font-size: 0.75rem; color: #666; font-weight: 600; margin-bottom: 4px;">Tipe
+                                Model</div>
                             <div style="font-size: 0.9rem; font-weight: 600; color: #333;" id="model-type">-</div>
                         </div>
-                        <div style="padding: 10px; background: #f8f9fa; border-left: 3px solid #667eea; border-radius: 4px;">
-                            <div style="font-size: 0.75rem; color: #666; font-weight: 600; margin-bottom: 4px;">Skor R² Test</div>
+                        <div
+                            style="padding: 10px; background: #f8f9fa; border-left: 3px solid #667eea; border-radius: 4px;">
+                            <div style="font-size: 0.75rem; color: #666; font-weight: 600; margin-bottom: 4px;">Skor R²
+                                Test</div>
                             <div style="font-size: 0.9rem; font-weight: 600; color: #28a745;" id="model-r2">-</div>
                         </div>
-                        <div style="padding: 10px; background: #f8f9fa; border-left: 3px solid #667eea; border-radius: 4px;">
-                            <div style="font-size: 0.75rem; color: #666; font-weight: 600; margin-bottom: 4px;">RMSE Test</div>
+                        <div
+                            style="padding: 10px; background: #f8f9fa; border-left: 3px solid #667eea; border-radius: 4px;">
+                            <div style="font-size: 0.75rem; color: #666; font-weight: 600; margin-bottom: 4px;">RMSE
+                                Test</div>
                             <div style="font-size: 0.9rem; font-weight: 600; color: #333;" id="model-rmse">-</div>
                         </div>
-                        <div style="padding: 10px; background: #f8f9fa; border-left: 3px solid #667eea; border-radius: 4px;">
-                            <div style="font-size: 0.75rem; color: #666; font-weight: 600; margin-bottom: 4px;">MAE Test</div>
+                        <div
+                            style="padding: 10px; background: #f8f9fa; border-left: 3px solid #667eea; border-radius: 4px;">
+                            <div style="font-size: 0.75rem; color: #666; font-weight: 600; margin-bottom: 4px;">MAE Test
+                            </div>
                             <div style="font-size: 0.9rem; font-weight: 600; color: #333;" id="model-mae">-</div>
                         </div>
                     </div>
@@ -487,9 +587,30 @@
                         <div style="color: #667eea; font-size: 0.9rem; margin-bottom: 10px;">Prediksi Nilai Akhir</div>
                         <div class="grade-number" id="predicted-grade">-</div>
                         <div class="grade-status" id="grade-status">-</div>
-                        <div style="margin-top: 15px; font-size: 0.85rem; color: #666;">
-                            Skala: <span id="grade-scale" style="font-weight: bold;">0-100%</span>
+                        <div style="font-size: 0.85rem; color: #666; margin-top: 5px;">
+                            Skala: <span id="grade-scale" style="font-weight: bold;">0-100</span>
                         </div>
+                    </div>
+                </div>
+
+                <!-- Feedback Card -->
+                <div class="card feedback-card" id="ai-feedback-card" style="display: none;">
+                    <div class="section-header" style="cursor: default;">
+                        <h5 style="margin: 0; color: #667eea; font-size: 1.1rem;">💡 Masukan</h5>
+                    </div>
+
+                    <!-- Loading State -->
+                    <div class="feedback-loading" id="feedback-loading">
+                        <div class="spinner-border spinner-border-sm" role="status"></div>
+                        <span>Menghasilkan umpan balik personal...</span>
+                    </div>
+
+                    <!-- Feedback Content -->
+                    <div class="feedback-content" id="feedback-content" style="display: none;"></div>
+
+                    <!-- Error State -->
+                    <div class="feedback-error" id="feedback-error" style="display: none;">
+                        <strong>⚠️ Error:</strong> <span id="feedback-error-message"></span>
                     </div>
                 </div>
 
@@ -497,7 +618,8 @@
                 <div class="card features-card" id="top-features" style="display: none;">
                     <div class="section-header" onclick="toggleSection(this)">
                         <h5>⭐ Pentingnya Fitur Model</h5>
-                        <button class="toggle-btn" onclick="toggleSection(this.parentElement); event.stopPropagation();">−</button>
+                        <button class="toggle-btn"
+                            onclick="toggleSection(this.parentElement); event.stopPropagation();">−</button>
                     </div>
                     <div class="section-content">
                         <p style="font-size: 0.9rem; color: #666; margin-bottom: 15px;">
@@ -507,87 +629,88 @@
                     </div>
                 </div>
             </div>
-            
+
             <!-- Form -->
             <form id="predictionForm">
                 <div class="form-section">
-                    <h3>📊 Informasi Siswa</h3>
-                    
+                    <h3>📊 Data Siswa</h3>
+
                     <div class="form-group">
-                        <label class="form-label">G1 - Nilai Periode 1 (0-100) 📈</label>
+                        <label class="form-label">Nilai Semester 1 (0-100) 📈</label>
                         <input type="number" class="form-control" name="G1" min="0" max="100" required>
                     </div>
-                    
+
                     <div class="form-group">
-                        <label class="form-label">G2 - Nilai Periode 2 (0-100) 📊</label>
+                        <label class="form-label">Nilai Semester 2 (0-100) 📊</label>
                         <input type="number" class="form-control" name="G2" min="0" max="100" required>
                     </div>
-                    
+
                     <div class="form-group">
-                        <label class="form-label">School 🏫</label>
+                        <label class="form-label">Sekolah 🏫</label>
                         <select class="form-select" name="school" required>
                             <option value="">Pilih sekolah...</option>
                             <option value="GP">Gabriel Pereira</option>
                             <option value="MS">Mousinho da Silveira</option>
                         </select>
                     </div>
-                    
+
                     <div class="form-group">
-                        <label class="form-label">Jumlah Kegagalan Sebelumnya ❌</label>
+                        <label class="form-label">Pernah Mengulang Mata Pelajaran? ❌</label>
                         <select class="form-select" name="failures" required>
                             <option value="">Pilih...</option>
-                            <option value="0">0 - Tidak ada kegagalan</option>
-                            <option value="1">1 - Satu kegagalan</option>
-                            <option value="2">2 - Dua kegagalan</option>
-                            <option value="3">3 - Tiga kegagalan</option>
+                            <option value="0">Tidak pernah</option>
+                            <option value="1">1 kali</option>
+                            <option value="2">2 kali</option>
+                            <option value="3">3 kali atau lebih</option>
                         </select>
                     </div>
-                    
+
                     <div class="form-group">
-                        <label class="form-label">Ketidakhadiran (0-93) 📅</label>
+                        <label class="form-label">Jumlah Ketidakhadiran 📅</label>
                         <input type="number" class="form-control" name="absences" min="0" max="93" required>
                     </div>
-                    
+
                 </div>
-                
+
                 <div class="form-section">
-                    <h3>🎓 Dukungan Akademik</h3>
-                    
+                    <h3>🎓 Akademik & Rencana</h3>
+
                     <div class="form-group">
-                        <label class="form-label">Dukungan Sekolah? 📚</label>
+                        <label class="form-label">Dapat Dukungan dari Sekolah? 📚</label>
                         <select class="form-select" name="schoolsup" required>
                             <option value="">Pilih...</option>
                             <option value="yes">Ya</option>
                             <option value="no">Tidak</option>
                         </select>
                     </div>
-                    
+
                     <div class="form-group">
-                        <label class="form-label">Rencana Pendidikan Tinggi? 🎯</label>
+                        <label class="form-label">Mau Kuliah? 🎯</label>
                         <select class="form-select" name="higher" required>
                             <option value="">Pilih...</option>
                             <option value="yes">Ya</option>
                             <option value="no">Tidak</option>
                         </select>
                     </div>
-                    
+
                     <div class="form-group">
-                        <label class="form-label">Tingkat Waktu Luang ⏰ (1-5)</label>
+                        <label class="form-label">Waktu Luang ⏰</label>
                         <select class="form-select" name="freetime" required>
                             <option value="">Pilih...</option>
-                            <option value="1">1 - Sangat rendah</option>
-                            <option value="2">2 - Rendah</option>
-                            <option value="3">3 - Sedang</option>
-                            <option value="4">4 - Tinggi</option>
-                            <option value="5">5 - Sangat tinggi</option>
+                            <option value="1">Sangat sedikit</option>
+                            <option value="2">Sedikit</option>
+                            <option value="3">Cukup</option>
+                            <option value="4">Banyak</option>
+                            <option value="5">Sangat banyak</option>
                         </select>
                     </div>
                 </div>
-                
+
                 <!-- Submit Button -->
                 <div style="display: flex; gap: 10px;">
                     <button type="submit" class="btn-predict" style="flex: 1;">🚀 Prediksi Nilai</button>
-                    <button type="button" class="btn btn-secondary" id="loadSampleBtn" style="flex: 0.3; padding: 12px;">📋 Contoh</button>
+                    <button type="button" class="btn btn-secondary" id="loadSampleBtn"
+                        style="flex: 0.3; padding: 12px;">📋 Contoh</button>
                 </div>
             </form>
         </div>
@@ -598,306 +721,571 @@
         <div class="shap-section-content">
             <!-- Scale & Status Legend -->
             <div style="background: white; color: #333; padding: 20px; border-radius: 10px; margin-bottom: 20px;">
-                <div style="font-weight: bold; margin-bottom: 12px; font-size: 0.95rem; color: #667eea;">📊 Skala Nilai & Panduan Status</div>
+                <div style="font-weight: bold; margin-bottom: 12px; font-size: 0.95rem; color: #667eea;">📊 Skala Nilai
+                    & Panduan Status</div>
                 <div style="font-size: 0.85rem; line-height: 2;">
-                    <div>🟢 <strong>Sangat Baik:</strong> 75-100% — Performa luar biasa</div>
-                    <div>🔵 <strong>Baik:</strong> 60-74% — Performa di atas rata-rata</div>
-                    <div>🟡 <strong>Cukup:</strong> 50-59% — Memenuhi persyaratan dasar</div>
-                    <div>🔴 <strong>Perlu Perbaikan:</strong> <50% — Di bawah harapan</div>
+                    <div>🟢 <strong>Sangat Baik:</strong> 75-100/100 — Performa luar biasa</div>
+                    <div>🔵 <strong>Baik:</strong> 60-74/100 — Performa di atas rata-rata</div>
+                    <div>🟡 <strong>Cukup:</strong> 50-59/100 — Memenuhi persyaratan dasar</div>
+                    <div style="margin-top: 3px;">🔴 <strong>Perlu Perbaikan:</strong>
+                        <50 /100 — Di bawah harapan</div>
+                    </div>
                 </div>
-            </div>
 
-            <!-- Grade Progression Chart (Separate Card) -->
-            <div class="card shap-card" id="grade-progression">
-                <div class="section-header">
-                    <h5 onclick="toggleGradeProgression(event)">📈 Perkembangan Nilai</h5>
-                    <button class="toggle-btn" onclick="toggleGradeProgression(event); event.stopPropagation();">−</button>
-                </div>
-                
-                <!-- Bar Chart Container with Grid - Collapsible Content -->
-                <div class="section-content grade-chart" style="position: relative;">
-                    
-                    <!-- Grid Lines -->
-                    <div style="position: absolute; left: 0; right: 0; top: 0; bottom: 0; pointer-events: none; display: flex; flex-direction: column; justify-content: space-between;">
-                        <div style="border-top: 1px solid #e8e8e8; height: 0;"></div>
-                        <div style="border-top: 1px solid #efefef; height: 0;"></div>
-                        <div style="border-top: 1px solid #f0f0f0; height: 0;"></div>
-                        <div style="border-top: 1px solid #efefef; height: 0;"></div>
-                        <div style="border-top: 2px solid #d0d0d0; height: 0;"></div>
+                <!-- Grade Progression Chart (Separate Card) -->
+                <div class="card shap-card" id="grade-progression">
+                    <div class="section-header">
+                        <h5 onclick="toggleGradeProgression(event)">📈 Perkembangan Nilai</h5>
+                        <button class="toggle-btn"
+                            onclick="toggleGradeProgression(event); event.stopPropagation();">−</button>
                     </div>
-                    
-                    <!-- G1 Bar -->
-                    <div style="display: flex; flex-direction: column; align-items: center; position: relative; z-index: 2;">
-                        <div style="background: linear-gradient(to top, #3498db, #2ecc71); width: 38px; border-radius: 3px 3px 0 0; margin-bottom: 12px; box-shadow: 0 4px 12px rgba(52, 152, 219, 0.25); transition: height 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);" id="g1-bar"></div>
-                        <div style="font-size: 0.75rem; font-weight: 600; color: #333; margin-bottom: 3px;">G1</div>
-                        <div style="font-size: 0.7rem; color: #999; margin-bottom: 8px;">Periode 1</div>
-                        <div id="g1-value" style="color: #3498db; font-size: 0.95rem; font-weight: bold;">-</div>
-                    </div>
-                    
-                    <!-- Arrow G1→G2 -->
-                        <div style="font-size: 2rem; color: #667eea; margin-bottom: 80px; font-weight: bold;">↗</div>
+
+                    <!-- Bar Chart Container with Grid - Collapsible Content -->
+                    <div class="section-content grade-chart" style="position: relative;">
+
+                        <!-- Grid Lines -->
+                        <div
+                            style="position: absolute; left: 0; right: 0; top: 0; bottom: 0; pointer-events: none; display: flex; flex-direction: column; justify-content: space-between;">
+                            <div style="border-top: 1px solid #e8e8e8; height: 0;"></div>
+                            <div style="border-top: 1px solid #efefef; height: 0;"></div>
+                            <div style="border-top: 1px solid #f0f0f0; height: 0;"></div>
+                            <div style="border-top: 1px solid #efefef; height: 0;"></div>
+                            <div style="border-top: 2px solid #d0d0d0; height: 0;"></div>
+                        </div>
+
+                        <!-- G1 Bar -->
+                        <div
+                            style="display: flex; flex-direction: column; align-items: center; position: relative; z-index: 2;">
+                            <div style="background: linear-gradient(to top, #3498db, #2ecc71); width: 38px; border-radius: 3px 3px 0 0; margin-bottom: 12px; box-shadow: 0 4px 12px rgba(52, 152, 219, 0.25); transition: height 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);"
+                                id="g1-bar"></div>
+                            <div style="font-size: 0.75rem; font-weight: 600; color: #333; margin-bottom: 3px;">G1</div>
+                            <div style="font-size: 0.7rem; color: #999; margin-bottom: 8px;">Semester 1</div>
+                            <div id="g1-value" style="color: #3498db; font-size: 0.95rem; font-weight: bold;">-</div>
+                        </div>
+
+                        <!-- Arrow G1→G2 -->
+                        <div id="arrow-g1-g2"
+                            style="font-size: 2rem; color: #667eea; font-weight: bold; align-self: center;">↗</div>
                         <!-- G2 Bar -->
-                        <div style="display: flex; flex-direction: column; align-items: center; position: relative; z-index: 2;">
-                            <div style="background: linear-gradient(to top, #1abc9c, #16a085); width: 38px; border-radius: 3px 3px 0 0; margin-bottom: 12px; box-shadow: 0 4px 12px rgba(26, 188, 156, 0.25); transition: height 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s;" id="g2-bar"></div>
+                        <div
+                            style="display: flex; flex-direction: column; align-items: center; position: relative; z-index: 2;">
+                            <div style="background: linear-gradient(to top, #1abc9c, #16a085); width: 38px; border-radius: 3px 3px 0 0; margin-bottom: 12px; box-shadow: 0 4px 12px rgba(26, 188, 156, 0.25); transition: height 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s;"
+                                id="g2-bar"></div>
                             <div style="font-size: 0.75rem; font-weight: 600; color: #333; margin-bottom: 3px;">G2</div>
-                            <div style="font-size: 0.7rem; color: #999; margin-bottom: 8px;">Periode 2</div>
+                            <div style="font-size: 0.7rem; color: #999; margin-bottom: 8px;">Semester 2</div>
                             <div id="g2-value" style="color: #1abc9c; font-size: 0.95rem; font-weight: bold;">-</div>
                         </div>
-                        
+
                         <!-- Arrow G2→G3 -->
-                        <div style="font-size: 2rem; color: #764ba2; margin-bottom: 80px; font-weight: bold;">→</div>
-                        
+                        <div id="arrow-g2-g3"
+                            style="font-size: 2rem; color: #764ba2; font-weight: bold; align-self: center;">→</div>
+
                         <!-- G3 Bar (Predicted) -->
-                        <div style="display: flex; flex-direction: column; align-items: center; position: relative; z-index: 2;">
-                            <div style="background: linear-gradient(to top, #667eea, #764ba2); width: 38px; border-radius: 3px 3px 0 0; margin-bottom: 12px; box-shadow: 0 6px 16px rgba(102, 126, 234, 0.35); border: 2px solid rgba(255, 255, 255, 0.5); box-sizing: border-box; transition: height 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.4s;" id="g3-bar"></div>
-                            <div style="font-size: 0.75rem; font-weight: 600; color: #667eea; margin-bottom: 3px;">G3</div>
+                        <div
+                            style="display: flex; flex-direction: column; align-items: center; position: relative; z-index: 2;">
+                            <div style="background: linear-gradient(to top, #667eea, #764ba2); width: 38px; border-radius: 3px 3px 0 0; margin-bottom: 12px; box-shadow: 0 6px 16px rgba(102, 126, 234, 0.35); border: 2px solid rgba(255, 255, 255, 0.5); box-sizing: border-box; transition: height 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.4s;"
+                                id="g3-bar"></div>
+                            <div style="font-size: 0.75rem; font-weight: 600; color: #667eea; margin-bottom: 3px;">G3
+                            </div>
                             <div style="font-size: 0.7rem; color: #999; margin-bottom: 8px;">Prediksi</div>
                             <div id="g3-value" style="color: #764ba2; font-size: 0.95rem; font-weight: bold;">-</div>
                         </div>
+                    </div>
                 </div>
-            </div>
-            <div class="card shap-card" id="shap-contributions">
-                <div class="section-header" onclick="toggleSection(this)">
-                    <h5>📊 Dampak Input Anda (Analisis SHAP)</h5>
-                    <button class="toggle-btn" onclick="toggleSection(this.parentElement); event.stopPropagation();">+</button>
-                </div>
-                <div class="section-content collapsed">
-                    <p style="font-size: 0.9rem; margin-bottom: 15px;">
-                        Bagaimana nilai input Anda mempengaruhi prediksi
-                    </p>
-                    <div id="shap-list"></div>
+                <div class="card shap-card" id="shap-contributions">
+                    <div class="section-header" onclick="toggleSection(this)">
+                        <h5>📊 Dampak Input Anda (Analisis SHAP)</h5>
+                        <button class="toggle-btn"
+                            onclick="toggleSection(this.parentElement); event.stopPropagation();">+</button>
+                    </div>
+                    <div class="section-content collapsed">
+                        <p style="font-size: 0.9rem; margin-bottom: 15px;">
+                            Analisis ini menunjukkan faktor apa saja yang menaikkan (hijau) atau menurunkan (merah)
+                            prediksi nilai akhir kamu. Angka di samping kanan menjelaskan seberapa besar pengaruhnya
+                            (dalam poin). Ini membantu memahami area mana yang menjadi kekuatan dan mana
+                            yang perlu diperbaiki.
+                        </p>
+                        <div id="shap-list"></div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <script>
-        // Wait for DOM to be fully loaded
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('DOM fully loaded');
-            
-            // Load model information
-            fetch('/api/model-info')
-                .then(response => response.json())
-                .then(data => {
-                    console.log('Model info loaded:', data);
-                    // Display model type - simplify to just "Random Forest Regressor"
-                    const modelType = data.model_type.includes('Random Forest') ? 'Random Forest Regressor' : data.model_type;
-                    document.getElementById('model-type').textContent = modelType;
-                    document.getElementById('model-r2').textContent = data.performance.test_r2 || '-';
-                    document.getElementById('model-rmse').textContent = data.performance.test_rmse || '-';
-                    document.getElementById('model-mae').textContent = data.performance.test_mae || '-';
-                })
-                .catch(error => console.error('Error loading model info:', error));
-            
-            // Form submission
-            const predictionForm = document.getElementById('predictionForm');
-            if (predictionForm) {
-                console.log('Form found, attaching submit handler');
-                predictionForm.addEventListener('submit', async (e) => {
-                    e.preventDefault();
-                    console.log('Form submitted!');
-                    
-                    // Get form data and add default values for other features
-                    const formData = new FormData(predictionForm);
-                    const data = Object.fromEntries(formData);
-                    
-                    // Add default values for features not in simple form
-                    // Convert G1 and G2 from 0-100 scale to 0-20 scale for the model
-                    const g1_input = parseInt(data.G1);
-                    const g2_input = parseInt(data.G2);
-                    const g1_model = (g1_input / 100) * 20;  // Convert 0-100 to 0-20
-                    const g2_model = (g2_input / 100) * 20;  // Convert 0-100 to 0-20
-                    
-                    const fullData = {
-                        school: data.school,
-                        sex: 'M',  // Default
-                        age: 17,   // Default
-                        address: 'U',  // Default
-                        famsize: 'GT3',  // Default
-                        Pstatus: 'T',  // Default
-                        Medu: 2,  // Default (Lower secondary)
-                        Fedu: 2,  // Default (Lower secondary)
-                        Mjob: 'services',  // Default
-                        Fjob: 'services',  // Default
-                        reason: 'course',  // Default
-                        guardian: 'mother',  // Default
-                        traveltime: 2,  // Default
-                        studytime: 2,  // Default
-                        failures: parseInt(data.failures),
-                        schoolsup: data.schoolsup,
-                        famsup: 'yes',  // Default
-                        paid: 'no',  // Default
-                        activities: 'yes',  // Default
-                        nursery: 'yes',  // Default
-                        higher: data.higher,
-                        internet: 'yes',  // Default
-                        romantic: 'no',  // Default
-                        famrel: 4,  // Default
-                        freetime: parseInt(data.freetime),  // From form
-                        goout: 3,  // Default
-                        Dalc: 1,  // Default (Very low)
-                        Walc: 1,  // Default
-                        health: 5,  // Default (Excellent)
-                        absences: parseInt(data.absences),
-                        G1: g1_model,
-                        G2: g2_model
-                    };
-                    
-                    console.log('Form data:', fullData);
-                    
-                    // Show loading
-                    document.getElementById('loading').style.display = 'block';
-                    document.getElementById('alert').classList.remove('show');
-                    
-                    try {
-                        const response = await fetch('/api/predict', {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json'
-                            },
-                            body: JSON.stringify(fullData)
-                        });
-                        
-                        const result = await response.json();
-                        console.log('Response:', response.status, result);
-                        
-                        if (response.ok && result.success) {
-                            // Show results inside container
-                            document.getElementById('results-inner').style.display = 'block';
-                            // Convert grade from 0-20 to 0-100% scale
-                            const gradeValue = parseFloat(result.predicted_grade);
-                            const gradePercent = (gradeValue / 20) * 100;
-                            document.getElementById('predicted-grade').textContent = gradePercent.toFixed(1) + '%';
-                            document.getElementById('grade-status').textContent = result.status;
-                            
-                            // Update Grade Progression Chart
-                            const g1Percent = (g1_model / 20) * 100;
-                            const g2Percent = (g2_model / 20) * 100;
-                            const g3Percent = gradePercent;
-                            
-                            document.getElementById('g1-bar').style.height = Math.max(20, g1Percent * 1.2) + 'px';
-                            document.getElementById('g2-bar').style.height = Math.max(20, g2Percent * 1.2) + 'px';
-                            document.getElementById('g3-bar').style.height = Math.max(20, g3Percent * 1.2) + 'px';
-                            
-                            document.getElementById('g1-value').textContent = g1Percent.toFixed(0) + '%';
-                            document.getElementById('g2-value').textContent = g2Percent.toFixed(0) + '%';
-                            document.getElementById('g3-value').textContent = g3Percent.toFixed(0) + '%';
-                            
-                            // Show SHAP contributions (per-prediction analysis)
-                            if (result.shap_contributions && result.shap_contributions.length > 0) {
-                                const shapList = document.getElementById('shap-list');
-                                // Get max contribution value for scaling
-                                const maxContrib = Math.max(...result.shap_contributions.map(c => Math.abs(c.contribution)));
-                                console.log('Max contrib:', maxContrib);
-                                console.log('SHAP contributions:', result.shap_contributions);
-                                shapList.innerHTML = result.shap_contributions.map((contrib, idx) => {
-                                    const barColor = contrib.contribution > 0 ? '#28a745' : '#dc3545';
-                                    const barWidth = maxContrib > 0 ? (Math.abs(contrib.contribution) / maxContrib * 100) : 0;
-                                    const valueColor = contrib.contribution > 0 ? '#28a745' : '#dc3545';
-                                    console.log(`Feature: ${contrib.feature}, Width: ${barWidth}%, BarColor: ${barColor}`);
-                                    const html = `
-                                        <div style="margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid #e0e0e0;">
-                                            <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
-                                                <span style="font-weight: 600; color: #000; font-size: 0.9rem; margin: 0;">${contrib.feature}</span>
-                                                <span style="color: ${valueColor}; font-weight: bold; font-size: 0.85rem;">${contrib.contribution > 0 ? '+' : ''}${contrib.contribution.toFixed(2)}</span>
-                                            </div>
-                                            <div style="width: 100%; height: 5px; background-color: #ccc; border-radius: 2px; overflow: hidden; position: relative;">
-                                                <div style="height: 5px !important; width: ${barWidth}% !important; background-color: ${barColor} !important; display: block !important; transition: width 0.5s ease !important;"></div>
-                                            </div>
+        <script>
+            // Wait for DOM to be fully loaded
+            document.addEventListener('DOMContentLoaded', function () {
+                console.log('DOM fully loaded')
+
+                // Load model information
+                fetch('/api/model-info')
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log('Model info loaded:', data)
+                        // Display model type - simplify to just "Random Forest Regressor"
+                        const modelType = data.model_type.includes('Random Forest') ? 'Random Forest Regressor' : data.model_type
+                        document.getElementById('model-type').textContent = modelType
+                        document.getElementById('model-r2').textContent = data.performance.test_r2 || '-'
+                        document.getElementById('model-rmse').textContent = data.performance.test_rmse || '-'
+                        document.getElementById('model-mae').textContent = data.performance.test_mae || '-'
+                    })
+                    .catch(error => console.error('Error loading model info:', error))
+
+                // Form submission
+                const predictionForm = document.getElementById('predictionForm')
+                if (predictionForm) {
+                    console.log('Form found, attaching submit handler')
+                    predictionForm.addEventListener('submit', async (e) => {
+                        e.preventDefault()
+                        console.log('Form submitted!')
+
+                        // Get form data and add default values for other features
+                        const formData = new FormData(predictionForm)
+                        const data = Object.fromEntries(formData)
+
+                        // Add default values for features not in simple form
+                        // Convert G1 and G2 from 0-100 scale to 0-20 scale for the model
+                        const g1_input = parseInt(data.G1)
+                        const g2_input = parseInt(data.G2)
+                        const g1_model = (g1_input / 100) * 20  // Convert 0-100 to 0-20
+                        const g2_model = (g2_input / 100) * 20  // Convert 0-100 to 0-20
+
+                        const fullData = {
+                            school: data.school,
+                            sex: 'M',  // Default
+                            age: 17,   // Default
+                            address: 'U',  // Default
+                            famsize: 'GT3',  // Default
+                            Pstatus: 'T',  // Default
+                            Medu: 2,  // Default (Lower secondary)
+                            Fedu: 2,  // Default (Lower secondary)
+                            Mjob: 'services',  // Default
+                            Fjob: 'services',  // Default
+                            reason: 'course',  // Default
+                            guardian: 'mother',  // Default
+                            traveltime: 2,  // Default
+                            studytime: 2,  // Default
+                            failures: parseInt(data.failures),
+                            schoolsup: data.schoolsup,
+                            famsup: 'yes',  // Default
+                            paid: 'no',  // Default
+                            activities: 'yes',  // Default
+                            nursery: 'yes',  // Default
+                            higher: data.higher,
+                            internet: 'yes',  // Default
+                            romantic: 'no',  // Default
+                            famrel: 4,  // Default
+                            freetime: parseInt(data.freetime),  // From form
+                            goout: 3,  // Default
+                            Dalc: 1,  // Default (Very low)
+                            Walc: 1,  // Default
+                            health: 5,  // Default (Excellent)
+                            absences: parseInt(data.absences),
+                            G1: g1_model,
+                            G2: g2_model
+                        }
+
+                        console.log('Form data:', fullData)
+
+                        // Show loading
+                        document.getElementById('loading').style.display = 'block'
+                        document.getElementById('alert').classList.remove('show')
+
+                        try {
+                            const response = await fetch('/api/predict', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify(fullData)
+                            })
+
+                            const result = await response.json()
+                            console.log('Response:', response.status, result)
+
+                            if (response.ok && result.success) {
+                                // Show results inside container
+                                document.getElementById('results-inner').style.display = 'block'
+                                // Convert grade from 0-20 to 0-100% scale
+                                const gradeValue = parseFloat(result.predicted_grade)
+                                const gradePercent = (gradeValue / 20) * 100
+                                document.getElementById('predicted-grade').textContent = gradePercent.toFixed(1) + '/100'
+                                document.getElementById('grade-status').textContent = result.status
+
+                                // Update Grade Progression Chart
+                                const g1Percent = (g1_model / 20) * 100
+                                const g2Percent = (g2_model / 20) * 100
+                                const g3Percent = gradePercent
+
+                                document.getElementById('g1-bar').style.height = Math.max(20, g1Percent * 1.2) + 'px'
+                                document.getElementById('g2-bar').style.height = Math.max(20, g2Percent * 1.2) + 'px'
+                                document.getElementById('g3-bar').style.height = Math.max(20, g3Percent * 1.2) + 'px'
+
+                                document.getElementById('g1-value').textContent = g1Percent.toFixed(0) + '/100'
+                                document.getElementById('g2-value').textContent = g2Percent.toFixed(0) + '/100'
+                                document.getElementById('g3-value').textContent = g3Percent.toFixed(1) + '/100'
+
+                                // Color helper function
+                                function getGradient(score, direction = 'to top') {
+                                    if (score >= 75) return `linear-gradient(${direction}, #11998e, #38ef7d)` // Green
+                                    if (score >= 60) return `linear-gradient(${direction}, #2980b9, #6dd5fa)` // Blue
+                                    if (score >= 50) return `linear-gradient(${direction}, #f2994a, #f2c94c)` // Yellow
+                                    return `linear-gradient(${direction}, #cb2d3e, #ef473a)` // Red
+                                }
+
+                                // Update Bar Colors
+                                document.getElementById('g1-bar').style.background = getGradient(g1Percent)
+                                document.getElementById('g2-bar').style.background = getGradient(g2Percent)
+
+                                // G3 Bar (Predicted) - Distinct Style (Striped)
+                                const g3Base = getGradient(g3Percent)
+                                document.getElementById('g3-bar').style.background = `
+                                    repeating-linear-gradient(
+                                        45deg,
+                                        rgba(255, 255, 255, 0.15),
+                                        rgba(255, 255, 255, 0.15) 10px,
+                                        transparent 10px,
+                                        transparent 20px
+                                    ), ${g3Base}`
+
+                                // Update Predicted Grade Card Color
+                                const resultCard = document.getElementById('result')
+                                resultCard.style.background = getGradient(gradePercent, '135deg')
+                                resultCard.style.color = 'white' // Ensure text is white for contrast
+
+                                // Update specific elements inside card for contrast
+                                document.getElementById('predicted-grade').style.color = 'white'
+                                document.getElementById('grade-scale').parentElement.style.color = 'rgba(255,255,255,0.9)'
+                                document.getElementById('grade-scale').style.color = 'white'
+
+                                // Update text colors for consistency (Chart labels)
+                                function getTextColor(score) {
+                                    if (score >= 75) return '#11998e'
+                                    if (score >= 60) return '#2980b9'
+                                    if (score >= 50) return '#f2994a'
+                                    return '#cb2d3e'
+                                }
+                                document.getElementById('g1-value').style.color = getTextColor(g1Percent)
+                                document.getElementById('g2-value').style.color = getTextColor(g2Percent)
+                                document.getElementById('g3-value').style.color = getTextColor(g3Percent)
+
+                                // Update trend arrows dynamically
+                                const arrow1 = document.getElementById('arrow-g1-g2')
+                                const arrow2 = document.getElementById('arrow-g2-g3')
+
+                                // G1 to G2 trend
+                                if (g2Percent > g1Percent) {
+                                    arrow1.textContent = '↗'
+                                    arrow1.style.color = '#2ecc71' // Green for up
+                                } else if (g2Percent < g1Percent) {
+                                    arrow1.textContent = '↘'
+                                    arrow1.style.color = '#dc3545' // Red for down
+                                } else {
+                                    arrow1.textContent = '→'
+                                    arrow1.style.color = '#667eea' // Blue for flat
+                                }
+
+                                // G2 to G3 trend
+                                if (g3Percent > g2Percent) {
+                                    arrow2.textContent = '↗'
+                                    arrow2.style.color = '#2ecc71'
+                                } else if (g3Percent < g2Percent) {
+                                    arrow2.textContent = '↘'
+                                    arrow2.style.color = '#dc3545'
+                                } else {
+                                    arrow2.textContent = '→'
+                                    arrow2.style.color = '#667eea'
+                                }
+
+                                // Show SHAP contributions (per-prediction analysis)
+                                if (result.shap_contributions && result.shap_contributions.length > 0) {
+                                    const shapList = document.getElementById('shap-list')
+
+                                    // Filter to show ONLY features that are actual user inputs
+                                    // This aligns the SHAP analysis perfectly with the form fields
+                                    const allowedFeatures = [
+                                        'G1', 'G2', 'school', 'failures', 'absences',
+                                        'schoolsup', 'higher', 'freetime'
+                                    ]
+
+                                    const filteredContributions = result.shap_contributions.filter(c => allowedFeatures.includes(c.feature))
+
+                                    // Get max contribution value for scaling
+                                    const maxContrib = Math.max(...filteredContributions.map(c => Math.abs(c.contribution)))
+                                    console.log('Max contrib:', maxContrib)
+                                    console.log('SHAP contributions:', filteredContributions) // Log filtered contributions
+
+                                    // Feature name translation map
+                                    const featureMap = {
+                                        'G1': 'Nilai Semester 1',
+                                        'G2': 'Nilai Semester 2',
+                                        'failures': 'Kegagalan Sebelumnya',
+                                        'absences': 'Ketidakhadiran',
+                                        'studytime': 'Waktu Belajar',
+                                        'freetime': 'Waktu Luang',
+                                        'goout': 'Frekuensi Keluar',
+                                        'Dalc': 'Konsumsi Alkohol (Hari Kerja)',
+                                        'Walc': 'Konsumsi Alkohol (Akhir Pekan)',
+                                        'health': 'Kesehatan',
+                                        'schoolsup': 'Dukungan Sekolah',
+                                        'famsup': 'Dukungan Keluarga',
+                                        'paid': 'Les Tambahan',
+                                        'activities': 'Ekstrakurikuler',
+                                        'age': 'Usia',
+                                        'sex': 'Jenis Kelamin',
+                                        'higher': 'Ingin Kuliah',
+                                        'internet': 'Akses Internet',
+                                        'romantic': 'Hubungan Romantis',
+                                        'reason': 'Alasan Pilih Sekolah',
+                                        'school': 'Sekolah',
+                                        'Mjob': 'Pekerjaan Ibu',
+                                        'Fjob': 'Pekerjaan Ayah'
+                                    }
+
+                                    shapList.innerHTML = filteredContributions.map(contrib => {
+                                        const barColor = contrib.contribution > 0 ? '#28a745' : '#dc3545'
+                                        const barWidth = maxContrib > 0 ? (Math.abs(contrib.contribution) / maxContrib * 50) : 0 // Max width is 50%
+                                        const valueColor = contrib.contribution > 0 ? '#28a745' : '#dc3545'
+
+                                        // Translate feature name
+                                        let baseName = featureMap[contrib.feature] || contrib.feature
+
+                                        // Get user input value for context
+                                        let userValue = ''
+                                        const inputEl = document.querySelector(`[name="${contrib.feature}"]`)
+                                        if (inputEl) {
+                                            if (inputEl.tagName === 'SELECT') {
+                                                // Try to get text content of selected option, or just value
+                                                userValue = inputEl.options[inputEl.selectedIndex].text
+                                                // If text is long or "Pilih...", use value or simplify
+                                                if (userValue.includes('Pilih')) userValue = inputEl.value
+                                            } else {
+                                                userValue = inputEl.value
+                                            }
+                                        }
+
+                                        let displayName = baseName
+                                        if (userValue) {
+                                            displayName = `${baseName} (${userValue})`
+                                        }
+
+                                        // Calculate style for absolute positioning from center
+                                        const barStyle = contrib.contribution > 0
+                                            ? `left: 50%; width: ${barWidth}%; background-color: ${barColor}; border-radius: 0 3px 3px 0;`
+                                            : `left: ${50 - barWidth}%; width: ${barWidth}%; background-color: ${barColor}; border-radius: 3px 0 0 3px;`
+
+                                        return `
+                                    <div style="margin-bottom: 5px;">
+                                        <div style="display: flex; justify-content: space-between; font-size: 0.85rem; font-weight: 600; margin-bottom: 2px;">
+                                            <span>${displayName}</span>
+                                            <span style="color: ${valueColor};">${contrib.contribution > 0 ? '+' : ''}${contrib.contribution.toFixed(2)}</span>
                                         </div>
-                                    `;
-                                    return html;
-                                }).join('');
-                                document.getElementById('shap-section-bg').style.display = 'block';
-                            }
-                            
-                            // Show top features (global model importance)
-                            if (result.top_features) {
-                                const featuresList = document.getElementById('features-list');
-                                featuresList.innerHTML = result.top_features.map((feat, idx) => `
+                                        <div style="width: 100%; height: 6px; background-color: #eee; border-radius: 3px; position: relative;">
+                                            <!-- Center line -->
+                                            <div style="position: absolute; left: 50%; top: 0; bottom: 0; width: 1px; background-color: #ccc; z-index: 1;"></div>
+                                            <!-- Bar -->
+                                            <div style="height: 100%; position: absolute; top: 0; ${barStyle}"></div>
+                                        </div>
+                                    </div>
+                                `
+                                    }).join('')
+                                    document.getElementById('shap-section-bg').style.display = 'block'
+                                }
+
+                                // Show top features (global model importance)
+                                if (result.top_features) {
+                                    const featuresList = document.getElementById('features-list')
+                                    featuresList.innerHTML = result.top_features.map((feat, idx) => `
                                     <div class="feature-item">
                                         <span>${idx + 1}. ${feat[0]}</span>
                                         <strong>${(feat[1] * 100).toFixed(2)}%</strong>
                                     </div>
-                                `).join('');
-                                document.getElementById('top-features').style.display = 'block';
+                                `).join('')
+                                    document.getElementById('top-features').style.display = 'block'
+                                }
+
+                                // Scroll to result
+                                document.getElementById('results-inner').scrollIntoView({ behavior: 'smooth' })
+
+                                // Generate AI Feedback - use original 0-100 scale values for display
+                                const displayData = {
+                                    G1: g1_input,  // Original 0-100 value
+                                    G2: g2_input,  // Original 0-100 value
+                                    school: data.school,
+                                    failures: parseInt(data.failures),
+                                    absences: parseInt(data.absences),
+                                    schoolsup: data.schoolsup,
+                                    higher: data.higher,
+                                    freetime: parseInt(data.freetime)
+                                }
+                                generateFeedback(displayData, gradeValue, result.status)
+                            } else {
+                                showError(result.error || 'Prediction failed')
                             }
-                            
-                            // Scroll to result
-                            document.getElementById('results-inner').scrollIntoView({ behavior: 'smooth' });
-                        } else {
-                            showError(result.error || 'Prediction failed');
+                        } catch (error) {
+                            console.error('Error:', error)
+                            showError(error.message)
+                        } finally {
+                            document.getElementById('loading').style.display = 'none'
                         }
-                    } catch (error) {
-                        console.error('Error:', error);
-                        showError(error.message);
-                    } finally {
-                        document.getElementById('loading').style.display = 'none';
-                    }
-                });
-            } else {
-                console.error('Form not found!');
-            }
-            
-            function showError(message) {
-                document.getElementById('alert-message').textContent = message;
-                document.getElementById('alert').classList.add('show');
-                document.getElementById('results-inner').style.display = 'none';
-                document.getElementById('shap-section-bg').style.display = 'none';
-            }
-            
-            // Load sample data for quick testing
-            function loadSampleData() {
-                const form = document.getElementById('predictionForm');
-                form.querySelector('[name="G1"]').value = '70';  // 14/20 * 100 = 70
-                form.querySelector('[name="G2"]').value = '75';  // 15/20 * 100 = 75
-                form.querySelector('[name="school"]').value = 'GP';
-                form.querySelector('[name="failures"]').value = '0';
-                form.querySelector('[name="absences"]').value = '0';
-                form.querySelector('[name="schoolsup"]').value = 'yes';
-                form.querySelector('[name="higher"]').value = 'yes';
-                form.querySelector('[name="freetime"]').value = '3';
-                
-                showError('Data contoh dimuat! Klik "Prediksi Nilai" untuk menguji.');
-                document.getElementById('alert').classList.remove('alert-danger');
-                document.getElementById('alert').classList.add('alert-success');
-            }
-
-            // Toggle Grade Progression collapse/expand
-            window.toggleGradeProgression = function(event) {
-                const card = document.getElementById('grade-progression');
-                const content = card.querySelector('.section-content');
-                const btn = card.querySelector('.toggle-btn');
-                
-                content.classList.toggle('collapsed');
-                card.classList.toggle('collapsed-card');
-                btn.textContent = content.classList.contains('collapsed') ? '+' : '−';
-            };
-
-            // Toggle collapsible sections
-            window.toggleSection = function(headerElement) {
-                const content = headerElement.nextElementSibling;
-                const btn = headerElement.querySelector('.toggle-btn');
-                
-                if (content.classList.contains('collapsed')) {
-                    content.classList.remove('collapsed');
-                    btn.textContent = '−';
+                    })
                 } else {
-                    content.classList.add('collapsed');
-                    btn.textContent = '+';
+                    console.error('Form not found!')
                 }
-            };
-            
-            // Attach sample data button
-            const sampleBtn = document.getElementById('loadSampleBtn');
-            if (sampleBtn) {
-                sampleBtn.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    loadSampleData();
-                });
-            }
-        });
-    </script>
+
+
+                // Generate AI Feedback
+                async function generateFeedback(inputData, predictedGrade, status) {
+                    try {
+                        // Filter out empty/default values to only send actual user inputs
+                        const userInputs = {}
+                        const formFields = ['G1', 'G2', 'school', 'failures', 'absences', 'schoolsup', 'higher', 'freetime']
+
+                        // Only include fields that were actually in the form
+                        for (const field of formFields) {
+                            if (inputData[field] !== undefined && inputData[field] !== null && inputData[field] !== '') {
+                                userInputs[field] = inputData[field]
+                            }
+                        }
+
+                        // Show feedback card
+                        document.getElementById('ai-feedback-card').style.display = 'block'
+                        document.getElementById('feedback-loading').style.display = 'flex'
+                        document.getElementById('feedback-content').style.display = 'none'
+                        document.getElementById('feedback-error').style.display = 'none'
+                        document.getElementById('feedback-content').textContent = ''
+
+                        const response = await fetch('/api/generate-feedback', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                input_data: userInputs,
+                                predicted_grade: predictedGrade,
+                                status: status
+                            })
+                        })
+
+                        if (!response.ok) {
+                            throw new Error('Gagal menghasilkan umpan balik')
+                        }
+
+                        // Hide loading, show content
+                        document.getElementById('feedback-loading').style.display = 'none'
+                        const feedbackContent = document.getElementById('feedback-content')
+                        feedbackContent.style.display = 'block'
+
+                        // Process streaming response
+                        const reader = response.body.getReader()
+                        const decoder = new TextDecoder()
+                        let fullText = ''
+
+                        while (true) {
+                            const { done, value } = await reader.read()
+                            if (done) break
+
+                            const chunk = decoder.decode(value, { stream: true })
+                            const lines = chunk.split('\n')
+
+                            for (const line of lines) {
+                                if (!line.trim()) continue
+
+                                try {
+                                    const data = JSON.parse(line)
+
+                                    if (data.error) {
+                                        document.getElementById('feedback-error-message').textContent = data.error
+                                        document.getElementById('feedback-error').style.display = 'block'
+                                        feedbackContent.style.display = 'none'
+                                        break
+                                    }
+
+                                    if (data.text) {
+                                        fullText += data.text
+                                        // Show plain text while streaming for immediate feedback
+                                        feedbackContent.textContent = fullText
+                                    }
+
+                                    if (data.done) {
+                                        console.log('Feedback generation complete')
+                                        // Render markdown when complete
+                                        feedbackContent.innerHTML = marked.parse(fullText)
+                                        break
+                                    }
+                                } catch (e) {
+                                    // Ignore JSON parse errors for incomplete chunks
+                                    console.debug('JSON parse error:', e)
+                                }
+                            }
+                        }
+
+                    } catch (error) {
+                        console.error('Feedback generation error:', error)
+                        document.getElementById('feedback-loading').style.display = 'none'
+                        document.getElementById('feedback-error-message').textContent = error.message
+                        document.getElementById('feedback-error').style.display = 'block'
+                    }
+                }
+
+                function showError(message) {
+                    document.getElementById('alert-message').textContent = message
+                    document.getElementById('alert').classList.add('show')
+                    document.getElementById('results-inner').style.display = 'none'
+                    document.getElementById('shap-section-bg').style.display = 'none'
+                }
+
+                // Load sample data for quick testing
+                function loadSampleData() {
+                    const form = document.getElementById('predictionForm')
+                    form.querySelector('[name="G1"]').value = '70'  // 14/20 * 100 = 70
+                    form.querySelector('[name="G2"]').value = '75'  // 15/20 * 100 = 75
+                    form.querySelector('[name="school"]').value = 'GP'
+                    form.querySelector('[name="failures"]').value = '0'
+                    form.querySelector('[name="absences"]').value = '0'
+                    form.querySelector('[name="schoolsup"]').value = 'yes'
+                    form.querySelector('[name="higher"]').value = 'yes'
+                    form.querySelector('[name="freetime"]').value = '3'
+
+                    showError('Data contoh dimuat! Klik "Prediksi Nilai" untuk menguji.')
+                    document.getElementById('alert').classList.remove('alert-danger')
+                    document.getElementById('alert').classList.add('alert-success')
+                }
+
+                // Toggle Grade Progression collapse/expand
+                window.toggleGradeProgression = function (event) {
+                    const card = document.getElementById('grade-progression')
+                    const content = card.querySelector('.section-content')
+                    const btn = card.querySelector('.toggle-btn')
+
+                    content.classList.toggle('collapsed')
+                    card.classList.toggle('collapsed-card')
+                    btn.textContent = content.classList.contains('collapsed') ? '+' : '−'
+                }
+
+                // Toggle collapsible sections
+                window.toggleSection = function (headerElement) {
+                    const content = headerElement.nextElementSibling
+                    const btn = headerElement.querySelector('.toggle-btn')
+
+                    if (content.classList.contains('collapsed')) {
+                        content.classList.remove('collapsed')
+                        btn.textContent = '−'
+                    } else {
+                        content.classList.add('collapsed')
+                        btn.textContent = '+'
+                    }
+                }
+
+                // Attach sample data button
+                const sampleBtn = document.getElementById('loadSampleBtn')
+                if (sampleBtn) {
+                    sampleBtn.addEventListener('click', function (e) {
+                        e.preventDefault()
+                        loadSampleData()
+                    })
+                }
+            });
+        </script>
 </body>
+
 </html>
