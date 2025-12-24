@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediksi Nilai Siswa - Sederhana</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        .container {
+            max-width: 700px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            margin: 0;
+            font-size: 2rem;
+            font-weight: bold;
+        }
+        
+        .header p {
+            margin: 8px 0 0 0;
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        .form-section {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .form-section h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        
+        .form-group {
+            margin-bottom: 12px;
+        }
+        
+        .form-label {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 6px;
+            font-size: 0.95rem;
+        }
+        
+        .form-control, .form-select {
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            padding: 10px 12px;
+            font-size: 0.95rem;
+        }
+        
+        .form-control:focus, .form-select:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+        }
+        
+        .btn-predict {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            color: white;
+            padding: 12px 40px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        
+        .btn-predict:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+            color: white;
+        }
+        
+        .result {
+            background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);
+            color: #333;
+            padding: 30px;
+            border-radius: 10px;
+            display: none;
+        }
+        
+        .result.show {
+            display: block;
+            animation: slideIn 0.5s ease-out;
+        }
+        
+        .result.error {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .grade-display {
+            text-align: center;
+        }
+        
+        .grade-number {
+            font-size: 3.5rem;
+            font-weight: bold;
+            margin: 15px 0;
+            color: #667eea;
+        }
+        
+        .grade-status {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #764ba2;
+        }
+        
+        .alert {
+            margin-bottom: 15px;
+            display: none;
+        }
+        
+        .alert.show {
+            display: block;
+        }
+        
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #667eea;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .feature-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+        
+        .top-features {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        
+        .top-features h5 {
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+        
+        .btn-secondary {
+            background: #6c757d;
+        }
+        
+        .btn-secondary:hover {
+            background: #5a6268;
+            color: white;
+        }
+        
+        .mode-toggle {
+            text-align: center;
+            padding: 10px 0;
+            margin-bottom: 20px;
+        }
+        
+        .mode-toggle a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
+        .mode-toggle a:hover {
+            text-decoration: underline;
+        }
+
+        .result-container {
+            display: block;
+        }
+
+        .collapsible-section {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 0;
+        }
+
+        .collapsible-section#top-features {
+            margin-top: 20px;
+        }
+
+        /* Card Styling */
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+
+        .grade-card {
+            background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);
+            color: #333;
+        }
+
+        .features-card {
+            background: #f8f9fa;
+            color: #333;
+        }
+
+        .shap-card {
+            background: white;
+            color: #333;
+        }
+
+        /* Results Wrapper Layout */
+        .results-wrapper-container {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 40px 20px;
+            margin-top: 0;
+        }
+
+        .results-wrapper {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            gap: 20px;
+            width: 100%;
+            align-items: flex-start;
+        }
+
+        .results-left {
+            flex: 1;
+            min-width: 300px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .results-right {
+            flex: 1;
+            min-width: 300px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* SHAP Wrapper (Outside Container) */
+        .shap-wrapper-container {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 40px 20px;
+        }
+
+        .shap-wrapper {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 1023px) {
+            .results-wrapper {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .results-left,
+            .results-right {
+                width: 100%;
+                flex: none;
+            }
+
+            .results-wrapper-container {
+                padding: 30px 20px;
+            }
+
+            .shap-wrapper-container {
+                padding: 30px 20px;
+            }
+
+            .shap-section-bg {
+                padding: 30px 20px;
+            }
+        }
+
+        /* SHAP Section (Outside Container) */
+        .shap-section-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 40px 20px;
+            margin-top: 0;
+        }
+
+        .shap-section-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            user-select: none;
+            margin-bottom: 15px;
+        }
+
+        .section-header h5 {
+            margin: 0;
+            color: #667eea;
+            font-size: 1.1rem;
+            flex: 1;
+            cursor: pointer;
+        }
+
+        .toggle-btn {
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s;
+        }
+
+        .toggle-btn:hover {
+            background: #764ba2;
+        }
+
+        .section-content {
+            max-height: 1200px;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease-out, min-height 0.3s ease-out;
+        }
+
+        .section-content.collapsed {
+            max-height: 0 !important;
+            overflow: hidden;
+            padding: 0 !important;
+            min-height: 0 !important;
+            margin: 0 !important;
+        }
+
+        .section-content.grade-chart {
+            display: flex;
+            gap: 40px;
+            align-items: flex-end;
+            justify-content: center;
+            min-height: 300px;
+            padding: 10px 20px 20px 20px;
+            background: linear-gradient(to bottom, #f8f9ff 0%, #ffffff 100%);
+            border-radius: 8px;
+            border-left: 2px solid #d0d0d0;
+            border-bottom: 2px solid #d0d0d0;
+            position: relative;
+        }
+
+        .section-content.grade-chart.collapsed {
+            min-height: 0 !important;
+            padding: 0 !important;
+        }
+
+        .shap-card {
+            padding: 25px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease-out;
+        }
+
+        .shap-card.collapsed-card {
+            padding: 0 !important;
+            margin-bottom: 10px !important;
+            background: transparent !important;
+            box-shadow: none !important;
+            border: none !important;
+        }
+
+        .shap-card.collapsed-card .section-header {
+            background: white;
+            padding: 15px 20px;
+            margin-bottom: 0;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📚 Prediksi Nilai Siswa</h1>
+            <p>⚡ Prediksi Cepat (10 Fitur Terpenting)</p>
+        </div>
+        
+        <div class="content">
+            <div class="mode-toggle">
+                <small>Menggunakan <strong>10 fitur terpenting</strong> • <a href="/">Ganti ke Form Lengkap</a></small>
+            </div>
+            
+            <!-- Alert -->
+            <div id="alert" class="alert alert-danger alert-dismissible fade" role="alert">
+                <strong id="alert-message"></strong>
+            </div>
+            
+            <!-- Loading -->
+            <div class="loading" id="loading">
+                <div class="spinner"></div>
+                <p>Memprediksi...</p>
+            </div>
+
+            <!-- Model Information (Always Visible) -->
+            <div class="card features-card" id="model-info-card" style="margin-bottom: 20px;">
+                <div style="padding: 15px;">
+                    <h5 style="margin: 0 0 12px 0; color: #667eea; font-size: 1rem;">📊 Informasi Model</h5>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 12px;">
+                        <div style="padding: 10px; background: #f8f9fa; border-left: 3px solid #667eea; border-radius: 4px;">
+                            <div style="font-size: 0.75rem; color: #666; font-weight: 600; margin-bottom: 4px;">Tipe Model</div>
+                            <div style="font-size: 0.9rem; font-weight: 600; color: #333;" id="model-type">-</div>
+                        </div>
+                        <div style="padding: 10px; background: #f8f9fa; border-left: 3px solid #667eea; border-radius: 4px;">
+                            <div style="font-size: 0.75rem; color: #666; font-weight: 600; margin-bottom: 4px;">Skor R² Test</div>
+                            <div style="font-size: 0.9rem; font-weight: 600; color: #28a745;" id="model-r2">-</div>
+                        </div>
+                        <div style="padding: 10px; background: #f8f9fa; border-left: 3px solid #667eea; border-radius: 4px;">
+                            <div style="font-size: 0.75rem; color: #666; font-weight: 600; margin-bottom: 4px;">RMSE Test</div>
+                            <div style="font-size: 0.9rem; font-weight: 600; color: #333;" id="model-rmse">-</div>
+                        </div>
+                        <div style="padding: 10px; background: #f8f9fa; border-left: 3px solid #667eea; border-radius: 4px;">
+                            <div style="font-size: 0.75rem; color: #666; font-weight: 600; margin-bottom: 4px;">MAE Test</div>
+                            <div style="font-size: 0.9rem; font-weight: 600; color: #333;" id="model-mae">-</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Results: Grade Display (Inside Container) -->
+            <div id="results-inner" style="display: none;">
+                <!-- Grade Card -->
+                <div class="card grade-card" id="result">
+                    <div class="grade-display">
+                        <div style="color: #667eea; font-size: 0.9rem; margin-bottom: 10px;">Prediksi Nilai Akhir</div>
+                        <div class="grade-number" id="predicted-grade">-</div>
+                        <div class="grade-status" id="grade-status">-</div>
+                        <div style="margin-top: 15px; font-size: 0.85rem; color: #666;">
+                            Skala: <span id="grade-scale" style="font-weight: bold;">0-100%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Feature Importance Card -->
+                <div class="card features-card" id="top-features" style="display: none;">
+                    <div class="section-header" onclick="toggleSection(this)">
+                        <h5>⭐ Pentingnya Fitur Model</h5>
+                        <button class="toggle-btn" onclick="toggleSection(this.parentElement); event.stopPropagation();">−</button>
+                    </div>
+                    <div class="section-content">
+                        <p style="font-size: 0.9rem; color: #666; margin-bottom: 15px;">
+                            Kepentingan global fitur dalam model
+                        </p>
+                        <div id="features-list"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Form -->
+            <form id="predictionForm">
+                <div class="form-section">
+                    <h3>📊 Informasi Siswa</h3>
+                    
+                    <div class="form-group">
+                        <label class="form-label">G1 - Nilai Periode 1 (0-100) 📈</label>
+                        <input type="number" class="form-control" name="G1" min="0" max="100" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">G2 - Nilai Periode 2 (0-100) 📊</label>
+                        <input type="number" class="form-control" name="G2" min="0" max="100" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">School 🏫</label>
+                        <select class="form-select" name="school" required>
+                            <option value="">Pilih sekolah...</option>
+                            <option value="GP">Gabriel Pereira</option>
+                            <option value="MS">Mousinho da Silveira</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Jumlah Kegagalan Sebelumnya ❌</label>
+                        <select class="form-select" name="failures" required>
+                            <option value="">Pilih...</option>
+                            <option value="0">0 - Tidak ada kegagalan</option>
+                            <option value="1">1 - Satu kegagalan</option>
+                            <option value="2">2 - Dua kegagalan</option>
+                            <option value="3">3 - Tiga kegagalan</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Ketidakhadiran (0-93) 📅</label>
+                        <input type="number" class="form-control" name="absences" min="0" max="93" required>
+                    </div>
+                    
+                </div>
+                
+                <div class="form-section">
+                    <h3>🎓 Dukungan Akademik</h3>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Dukungan Sekolah? 📚</label>
+                        <select class="form-select" name="schoolsup" required>
+                            <option value="">Pilih...</option>
+                            <option value="yes">Ya</option>
+                            <option value="no">Tidak</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Rencana Pendidikan Tinggi? 🎯</label>
+                        <select class="form-select" name="higher" required>
+                            <option value="">Pilih...</option>
+                            <option value="yes">Ya</option>
+                            <option value="no">Tidak</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Tingkat Waktu Luang ⏰ (1-5)</label>
+                        <select class="form-select" name="freetime" required>
+                            <option value="">Pilih...</option>
+                            <option value="1">1 - Sangat rendah</option>
+                            <option value="2">2 - Rendah</option>
+                            <option value="3">3 - Sedang</option>
+                            <option value="4">4 - Tinggi</option>
+                            <option value="5">5 - Sangat tinggi</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <!-- Submit Button -->
+                <div style="display: flex; gap: 10px;">
+                    <button type="submit" class="btn-predict" style="flex: 1;">🚀 Prediksi Nilai</button>
+                    <button type="button" class="btn btn-secondary" id="loadSampleBtn" style="flex: 0.3; padding: 12px;">📋 Contoh</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- SHAP Analysis (Outside Container) -->
+    <div class="shap-section-bg" id="shap-section-bg" style="display: none;">
+        <div class="shap-section-content">
+            <!-- Scale & Status Legend -->
+            <div style="background: white; color: #333; padding: 20px; border-radius: 10px; margin-bottom: 20px;">
+                <div style="font-weight: bold; margin-bottom: 12px; font-size: 0.95rem; color: #667eea;">📊 Skala Nilai & Panduan Status</div>
+                <div style="font-size: 0.85rem; line-height: 2;">
+                    <div>🟢 <strong>Sangat Baik:</strong> 75-100% — Performa luar biasa</div>
+                    <div>🔵 <strong>Baik:</strong> 60-74% — Performa di atas rata-rata</div>
+                    <div>🟡 <strong>Cukup:</strong> 50-59% — Memenuhi persyaratan dasar</div>
+                    <div>🔴 <strong>Perlu Perbaikan:</strong> <50% — Di bawah harapan</div>
+                </div>
+            </div>
+
+            <!-- Grade Progression Chart (Separate Card) -->
+            <div class="card shap-card" id="grade-progression">
+                <div class="section-header">
+                    <h5 onclick="toggleGradeProgression(event)">📈 Perkembangan Nilai</h5>
+                    <button class="toggle-btn" onclick="toggleGradeProgression(event); event.stopPropagation();">−</button>
+                </div>
+                
+                <!-- Bar Chart Container with Grid - Collapsible Content -->
+                <div class="section-content grade-chart" style="position: relative;">
+                    
+                    <!-- Grid Lines -->
+                    <div style="position: absolute; left: 0; right: 0; top: 0; bottom: 0; pointer-events: none; display: flex; flex-direction: column; justify-content: space-between;">
+                        <div style="border-top: 1px solid #e8e8e8; height: 0;"></div>
+                        <div style="border-top: 1px solid #efefef; height: 0;"></div>
+                        <div style="border-top: 1px solid #f0f0f0; height: 0;"></div>
+                        <div style="border-top: 1px solid #efefef; height: 0;"></div>
+                        <div style="border-top: 2px solid #d0d0d0; height: 0;"></div>
+                    </div>
+                    
+                    <!-- G1 Bar -->
+                    <div style="display: flex; flex-direction: column; align-items: center; position: relative; z-index: 2;">
+                        <div style="background: linear-gradient(to top, #3498db, #2ecc71); width: 38px; border-radius: 3px 3px 0 0; margin-bottom: 12px; box-shadow: 0 4px 12px rgba(52, 152, 219, 0.25); transition: height 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);" id="g1-bar"></div>
+                        <div style="font-size: 0.75rem; font-weight: 600; color: #333; margin-bottom: 3px;">G1</div>
+                        <div style="font-size: 0.7rem; color: #999; margin-bottom: 8px;">Periode 1</div>
+                        <div id="g1-value" style="color: #3498db; font-size: 0.95rem; font-weight: bold;">-</div>
+                    </div>
+                    
+                    <!-- Arrow G1→G2 -->
+                        <div style="font-size: 2rem; color: #667eea; margin-bottom: 80px; font-weight: bold;">↗</div>
+                        <!-- G2 Bar -->
+                        <div style="display: flex; flex-direction: column; align-items: center; position: relative; z-index: 2;">
+                            <div style="background: linear-gradient(to top, #1abc9c, #16a085); width: 38px; border-radius: 3px 3px 0 0; margin-bottom: 12px; box-shadow: 0 4px 12px rgba(26, 188, 156, 0.25); transition: height 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s;" id="g2-bar"></div>
+                            <div style="font-size: 0.75rem; font-weight: 600; color: #333; margin-bottom: 3px;">G2</div>
+                            <div style="font-size: 0.7rem; color: #999; margin-bottom: 8px;">Periode 2</div>
+                            <div id="g2-value" style="color: #1abc9c; font-size: 0.95rem; font-weight: bold;">-</div>
+                        </div>
+                        
+                        <!-- Arrow G2→G3 -->
+                        <div style="font-size: 2rem; color: #764ba2; margin-bottom: 80px; font-weight: bold;">→</div>
+                        
+                        <!-- G3 Bar (Predicted) -->
+                        <div style="display: flex; flex-direction: column; align-items: center; position: relative; z-index: 2;">
+                            <div style="background: linear-gradient(to top, #667eea, #764ba2); width: 38px; border-radius: 3px 3px 0 0; margin-bottom: 12px; box-shadow: 0 6px 16px rgba(102, 126, 234, 0.35); border: 2px solid rgba(255, 255, 255, 0.5); box-sizing: border-box; transition: height 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.4s;" id="g3-bar"></div>
+                            <div style="font-size: 0.75rem; font-weight: 600; color: #667eea; margin-bottom: 3px;">G3</div>
+                            <div style="font-size: 0.7rem; color: #999; margin-bottom: 8px;">Prediksi</div>
+                            <div id="g3-value" style="color: #764ba2; font-size: 0.95rem; font-weight: bold;">-</div>
+                        </div>
+                </div>
+            </div>
+            <div class="card shap-card" id="shap-contributions">
+                <div class="section-header" onclick="toggleSection(this)">
+                    <h5>📊 Dampak Input Anda (Analisis SHAP)</h5>
+                    <button class="toggle-btn" onclick="toggleSection(this.parentElement); event.stopPropagation();">+</button>
+                </div>
+                <div class="section-content collapsed">
+                    <p style="font-size: 0.9rem; margin-bottom: 15px;">
+                        Bagaimana nilai input Anda mempengaruhi prediksi
+                    </p>
+                    <div id="shap-list"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Wait for DOM to be fully loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM fully loaded');
+            
+            // Load model information
+            fetch('/api/model-info')
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Model info loaded:', data);
+                    // Display model type - simplify to just "Random Forest Regressor"
+                    const modelType = data.model_type.includes('Random Forest') ? 'Random Forest Regressor' : data.model_type;
+                    document.getElementById('model-type').textContent = modelType;
+                    document.getElementById('model-r2').textContent = data.performance.test_r2 || '-';
+                    document.getElementById('model-rmse').textContent = data.performance.test_rmse || '-';
+                    document.getElementById('model-mae').textContent = data.performance.test_mae || '-';
+                })
+                .catch(error => console.error('Error loading model info:', error));
+            
+            // Form submission
+            const predictionForm = document.getElementById('predictionForm');
+            if (predictionForm) {
+                console.log('Form found, attaching submit handler');
+                predictionForm.addEventListener('submit', async (e) => {
+                    e.preventDefault();
+                    console.log('Form submitted!');
+                    
+                    // Get form data and add default values for other features
+                    const formData = new FormData(predictionForm);
+                    const data = Object.fromEntries(formData);
+                    
+                    // Add default values for features not in simple form
+                    // Convert G1 and G2 from 0-100 scale to 0-20 scale for the model
+                    const g1_input = parseInt(data.G1);
+                    const g2_input = parseInt(data.G2);
+                    const g1_model = (g1_input / 100) * 20;  // Convert 0-100 to 0-20
+                    const g2_model = (g2_input / 100) * 20;  // Convert 0-100 to 0-20
+                    
+                    const fullData = {
+                        school: data.school,
+                        sex: 'M',  // Default
+                        age: 17,   // Default
+                        address: 'U',  // Default
+                        famsize: 'GT3',  // Default
+                        Pstatus: 'T',  // Default
+                        Medu: 2,  // Default (Lower secondary)
+                        Fedu: 2,  // Default (Lower secondary)
+                        Mjob: 'services',  // Default
+                        Fjob: 'services',  // Default
+                        reason: 'course',  // Default
+                        guardian: 'mother',  // Default
+                        traveltime: 2,  // Default
+                        studytime: 2,  // Default
+                        failures: parseInt(data.failures),
+                        schoolsup: data.schoolsup,
+                        famsup: 'yes',  // Default
+                        paid: 'no',  // Default
+                        activities: 'yes',  // Default
+                        nursery: 'yes',  // Default
+                        higher: data.higher,
+                        internet: 'yes',  // Default
+                        romantic: 'no',  // Default
+                        famrel: 4,  // Default
+                        freetime: parseInt(data.freetime),  // From form
+                        goout: 3,  // Default
+                        Dalc: 1,  // Default (Very low)
+                        Walc: 1,  // Default
+                        health: 5,  // Default (Excellent)
+                        absences: parseInt(data.absences),
+                        G1: g1_model,
+                        G2: g2_model
+                    };
+                    
+                    console.log('Form data:', fullData);
+                    
+                    // Show loading
+                    document.getElementById('loading').style.display = 'block';
+                    document.getElementById('alert').classList.remove('show');
+                    
+                    try {
+                        const response = await fetch('/api/predict', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify(fullData)
+                        });
+                        
+                        const result = await response.json();
+                        console.log('Response:', response.status, result);
+                        
+                        if (response.ok && result.success) {
+                            // Show results inside container
+                            document.getElementById('results-inner').style.display = 'block';
+                            // Convert grade from 0-20 to 0-100% scale
+                            const gradeValue = parseFloat(result.predicted_grade);
+                            const gradePercent = (gradeValue / 20) * 100;
+                            document.getElementById('predicted-grade').textContent = gradePercent.toFixed(1) + '%';
+                            document.getElementById('grade-status').textContent = result.status;
+                            
+                            // Update Grade Progression Chart
+                            const g1Percent = (g1_model / 20) * 100;
+                            const g2Percent = (g2_model / 20) * 100;
+                            const g3Percent = gradePercent;
+                            
+                            document.getElementById('g1-bar').style.height = Math.max(20, g1Percent * 1.2) + 'px';
+                            document.getElementById('g2-bar').style.height = Math.max(20, g2Percent * 1.2) + 'px';
+                            document.getElementById('g3-bar').style.height = Math.max(20, g3Percent * 1.2) + 'px';
+                            
+                            document.getElementById('g1-value').textContent = g1Percent.toFixed(0) + '%';
+                            document.getElementById('g2-value').textContent = g2Percent.toFixed(0) + '%';
+                            document.getElementById('g3-value').textContent = g3Percent.toFixed(0) + '%';
+                            
+                            // Show SHAP contributions (per-prediction analysis)
+                            if (result.shap_contributions && result.shap_contributions.length > 0) {
+                                const shapList = document.getElementById('shap-list');
+                                // Get max contribution value for scaling
+                                const maxContrib = Math.max(...result.shap_contributions.map(c => Math.abs(c.contribution)));
+                                console.log('Max contrib:', maxContrib);
+                                console.log('SHAP contributions:', result.shap_contributions);
+                                shapList.innerHTML = result.shap_contributions.map((contrib, idx) => {
+                                    const barColor = contrib.contribution > 0 ? '#28a745' : '#dc3545';
+                                    const barWidth = maxContrib > 0 ? (Math.abs(contrib.contribution) / maxContrib * 100) : 0;
+                                    const valueColor = contrib.contribution > 0 ? '#28a745' : '#dc3545';
+                                    console.log(`Feature: ${contrib.feature}, Width: ${barWidth}%, BarColor: ${barColor}`);
+                                    const html = `
+                                        <div style="margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid #e0e0e0;">
+                                            <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+                                                <span style="font-weight: 600; color: #000; font-size: 0.9rem; margin: 0;">${contrib.feature}</span>
+                                                <span style="color: ${valueColor}; font-weight: bold; font-size: 0.85rem;">${contrib.contribution > 0 ? '+' : ''}${contrib.contribution.toFixed(2)}</span>
+                                            </div>
+                                            <div style="width: 100%; height: 5px; background-color: #ccc; border-radius: 2px; overflow: hidden; position: relative;">
+                                                <div style="height: 5px !important; width: ${barWidth}% !important; background-color: ${barColor} !important; display: block !important; transition: width 0.5s ease !important;"></div>
+                                            </div>
+                                        </div>
+                                    `;
+                                    return html;
+                                }).join('');
+                                document.getElementById('shap-section-bg').style.display = 'block';
+                            }
+                            
+                            // Show top features (global model importance)
+                            if (result.top_features) {
+                                const featuresList = document.getElementById('features-list');
+                                featuresList.innerHTML = result.top_features.map((feat, idx) => `
+                                    <div class="feature-item">
+                                        <span>${idx + 1}. ${feat[0]}</span>
+                                        <strong>${(feat[1] * 100).toFixed(2)}%</strong>
+                                    </div>
+                                `).join('');
+                                document.getElementById('top-features').style.display = 'block';
+                            }
+                            
+                            // Scroll to result
+                            document.getElementById('results-inner').scrollIntoView({ behavior: 'smooth' });
+                        } else {
+                            showError(result.error || 'Prediction failed');
+                        }
+                    } catch (error) {
+                        console.error('Error:', error);
+                        showError(error.message);
+                    } finally {
+                        document.getElementById('loading').style.display = 'none';
+                    }
+                });
+            } else {
+                console.error('Form not found!');
+            }
+            
+            function showError(message) {
+                document.getElementById('alert-message').textContent = message;
+                document.getElementById('alert').classList.add('show');
+                document.getElementById('results-inner').style.display = 'none';
+                document.getElementById('shap-section-bg').style.display = 'none';
+            }
+            
+            // Load sample data for quick testing
+            function loadSampleData() {
+                const form = document.getElementById('predictionForm');
+                form.querySelector('[name="G1"]').value = '70';  // 14/20 * 100 = 70
+                form.querySelector('[name="G2"]').value = '75';  // 15/20 * 100 = 75
+                form.querySelector('[name="school"]').value = 'GP';
+                form.querySelector('[name="failures"]').value = '0';
+                form.querySelector('[name="absences"]').value = '0';
+                form.querySelector('[name="schoolsup"]').value = 'yes';
+                form.querySelector('[name="higher"]').value = 'yes';
+                form.querySelector('[name="freetime"]').value = '3';
+                
+                showError('Data contoh dimuat! Klik "Prediksi Nilai" untuk menguji.');
+                document.getElementById('alert').classList.remove('alert-danger');
+                document.getElementById('alert').classList.add('alert-success');
+            }
+
+            // Toggle Grade Progression collapse/expand
+            window.toggleGradeProgression = function(event) {
+                const card = document.getElementById('grade-progression');
+                const content = card.querySelector('.section-content');
+                const btn = card.querySelector('.toggle-btn');
+                
+                content.classList.toggle('collapsed');
+                card.classList.toggle('collapsed-card');
+                btn.textContent = content.classList.contains('collapsed') ? '+' : '−';
+            };
+
+            // Toggle collapsible sections
+            window.toggleSection = function(headerElement) {
+                const content = headerElement.nextElementSibling;
+                const btn = headerElement.querySelector('.toggle-btn');
+                
+                if (content.classList.contains('collapsed')) {
+                    content.classList.remove('collapsed');
+                    btn.textContent = '−';
+                } else {
+                    content.classList.add('collapsed');
+                    btn.textContent = '+';
+                }
+            };
+            
+            // Attach sample data button
+            const sampleBtn = document.getElementById('loadSampleBtn');
+            if (sampleBtn) {
+                sampleBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    loadSampleData();
+                });
+            }
+        });
+    </script>
+</body>
+</html>
